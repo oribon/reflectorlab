@@ -1,0 +1,36 @@
+name: reflector-unnumbered
+
+topology:
+  nodes:
+    reflector:
+      kind: linux
+      image: quay.io/frrouting/frr:9.1.1
+      mgmt-ipv4: 172.20.20.100
+      binds:
+        - reflector/daemons:/etc/frr/daemons
+        - reflector/frr.conf:/etc/frr/frr.conf
+        - reflector/vtysh.conf:/etc/frr/vtysh.conf
+    node1:
+      kind: linux
+      image: quay.io/frrouting/frr:9.1.1
+      mgmt-ipv4: 172.20.20.101
+      binds:
+        - node1/daemons:/etc/frr/daemons
+        - node1/frr.conf:/etc/frr/frr.conf
+        - node1/vtysh.conf:/etc/frr/vtysh.conf
+    node2:
+      kind: linux
+      image: quay.io/frrouting/frr:9.1.1
+      mgmt-ipv4: 172.20.20.102
+      binds:
+        - node2/daemons:/etc/frr/daemons
+        - node2/frr.conf:/etc/frr/frr.conf
+        - node2/vtysh.conf:/etc/frr/vtysh.conf
+    ext-ibgp:
+      kind: linux
+      image: quay.io/frrouting/frr:9.1.1
+      mgmt-ipv4: 172.20.20.111
+      binds:
+        - ext-ibgp/daemons:/etc/frr/daemons
+        - ext-ibgp/frr.conf:/etc/frr/frr.conf
+        - ext-ibgp/vtysh.conf:/etc/frr/vtysh.conf
